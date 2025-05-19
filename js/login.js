@@ -1,4 +1,4 @@
-const apiUrl = "https://script.google.com/macros/s/AKfycbzCDdfddkcE1WA_e8UT19c7BaStxhcA2POmbIHU4rCkhm9Ehoaosibs6S7ACPI16Z4u/exec";
+const apiUrl = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLi9wKSnuSi7P5zNJ9HhzLk8vedJrUbvE04P74ZS-u3owQc9NrtvqGj_qecyAEBu-XOeddS9FoU9A3EjfP3iKSQ&lib=M-1WgA93q8RUHAvFckKbJx_vqjVhiFdh1L";
 const urlParams = new URLSearchParams(window.location.search);
 const platform = urlParams.get("platform");
 
