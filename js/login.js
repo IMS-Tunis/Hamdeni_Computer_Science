@@ -14,7 +14,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   if (user) {
     localStorage.setItem("studentId", user.id);
     localStorage.setItem("platform", platform);
-    window.location.href = `./${platform}/dashboard.html`;
+    window.location.href = `/Hamdeni_Computer_Science/${platform}/dashboard.html`;
   } else {
     alert("Invalid credentials");
   }
