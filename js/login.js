@@ -8,6 +8,11 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
 
+  console.log("Attempting login...");
+  console.log("Entered username:", username);
+  console.log("Entered password:", password);
+  console.log("Target platform:", platform);
+
   try {
     const res = await fetch(apiUrl);
     const data = await res.json();
@@ -19,6 +24,8 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     );
 
     if (user) {
+      alert("✅ Login successful!");
+      console.log("Matched user:", user);
       localStorage.setItem("studentId", user.ID);
       localStorage.setItem("platform", platform);
       window.location.href = `/Hamdeni_Computer_Science/${platform}/dashboard.html`;
