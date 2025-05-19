@@ -1,4 +1,6 @@
-const apiUrl = "https://script.google.com/macros/s/AKfycbxHCC_YD_MjENTUp3qYrUw-HZpODe-jIdgWDgAhaLRrnt11WciTPoUF7nwAlseqIRCB/exec";
+const apiUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(
+  "https://script.google.com/macros/s/AKfycbxHCC_YD_MjENTUp3qYrUw-HZpODe-jIdgWDgAhaLRrnt11WciTPoUF7nwAlseqIRCB/exec"
+);
 
 const urlParams = new URLSearchParams(window.location.search);
 const platform = urlParams.get("platform");
@@ -26,7 +28,6 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     if (user) {
       alert("✅ Login successful!");
-      console.log("Matched user:", user);
       localStorage.setItem("studentId", user.ID);
       localStorage.setItem("platform", platform);
       window.location.href = `/Hamdeni_Computer_Science/${platform}/dashboard.html`;
