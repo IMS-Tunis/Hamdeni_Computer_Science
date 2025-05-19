@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../logout.js"></script>
+</head>
+<body>
+  <h2>Welcome, Student</h2>
+  <button onclick="logout()">Logout</button>
+
+  <div style="display: flex; gap: 2rem;">
+    <div id="theory">
+      <h3>Theory Points</h3>
+    </div>
+    <div id="levels">
+      <h3>Programming Levels</h3>
+    </div>
+  </div>
+
+  <script>
+    const id = localStorage.getItem("studentID");
+    const platform = localStorage.getItem("platform");
+
+    if (!id || platform !== window.location.pathname.split("/")[1]) {
+      window.location.href = "../index.html";
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbzCDdfddkcE1WA_e8UT19c7BaStxhcA2POmbIHU4rCkhm9Ehoaosibs6S7ACPI16Z4u/exec?sheet=Progress")
+      .then(res => res.json())
+      .then(data => {
+        const student = data.find(row => row["ID"] === id);
+        if (student) {
+          document.getElementById("theory").innerHTML += `<p>Progress for $<built-in function id>:</p>`;
+          Object.entries(student).forEach(([key, value]) => {
+            if (key !== "ID") {
+              const status = value === "yes" ? "✅" : "❌";
+              document.getElementById("theory").innerHTML += `<p>\${key}: \${status}</p>`;
+            }
+          });
+        }
+      });
+  </script>
+</body>
+</html>
