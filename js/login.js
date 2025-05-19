@@ -1,4 +1,4 @@
-const apiUrl = "https://script.google.com/macros/s/AKfycbxHCC_YD_MjENTUp3qYrUw-HZpODe-jIdgWDgAhaLRrnt11WciTPoUF7nwAlseqIRCB/exec";
+const apiUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://script.google.com/macros/s/AKfycbxHCC_YD_MjENTUp3qYrUw-HZpODe-jIdgWDgAhaLRrnt11WciTPoUF7nwAlseqIRCB/exec");
 const urlParams = new URLSearchParams(window.location.search);
 const platform = urlParams.get("platform");
 
