@@ -4,14 +4,21 @@ const platform = urlParams.get("platform");
 
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
+
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
+
+  console.log("Attempting login...");
+  console.log("Entered username:", username);
+  console.log("Entered password:", password);
+  console.log("Target platform:", platform);
 
   try {
     const res = await fetch(apiUrl);
     const data = await res.json();
 
-    // Your API returns a plain array, not { users: [...] }
+    console.log("Fetched data:", data);
+
     const user = data.find(u =>
       u.Username === username &&
       u.Password.toString() === password &&
@@ -19,11 +26,14 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     );
 
     if (user) {
+      alert("✅ Login successful!");
+      console.log("Matched user:", user);
       localStorage.setItem("studentId", user.ID);
       localStorage.setItem("platform", platform);
       window.location.href = `/Hamdeni_Computer_Science/${platform}/dashboard.html`;
     } else {
-      alert("Invalid credentials");
+      alert("❌ Invalid credentials");
+      console.warn("No match found in user list.");
     }
   } catch (err) {
     console.error("Login error:", err);
