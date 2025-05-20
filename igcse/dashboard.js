@@ -25,7 +25,7 @@ async function renderDashboard() {
   theoryProgress.forEach(row => progressMap[row.point_id] = row);
   const theoryDiv = document.getElementById('theory-points');
 
-  theoryPoints.sort((a, b) => a.point_order - b.point_order).forEach(point => {
+  theoryPoints.sort((a, b) => a.point_order - b.point_order).forEach((point, index) => {
     const link = point.link || "#";
     const wrapper = document.createElement("a");
     wrapper.href = `pages/theory/${link}`;
@@ -37,6 +37,16 @@ async function renderDashboard() {
     }
 
     wrapper.title = point.title;
+
+    const label = document.createElement("span");
+    label.innerText = `P${index + 1}`;
+    label.style.color = "white";
+    label.style.fontWeight = "bold";
+    label.style.display = "block";
+    label.style.textAlign = "center";
+    label.style.marginTop = "30%";
+
+    wrapper.appendChild(label);
     theoryDiv.appendChild(wrapper);
   });
 
