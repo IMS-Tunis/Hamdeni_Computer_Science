@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (students.length > 0) {
       const student = students[0];
-      localStorage.setItem("studentId", student.studentid);
+    localStorage.setItem("studentid", student.studentid);
       localStorage.setItem("platform", student.platform);
       window.location.href = `${platform}/dashboard.html`;
     } else {
