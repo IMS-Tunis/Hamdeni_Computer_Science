@@ -1,14 +1,24 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: #f8f9fb;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f7fa;
 }
 header {
-  background: #2e3a59;
+  background: linear-gradient(to right, #3e4a89, #2b5876);
   color: white;
-  padding: 20px;
   text-align: center;
-  font-size: 1.5em;
+  padding: 30px 10px;
+}
+header h1 {
+  font-size: 3em;
+  margin: 0;
+  animation: fadeInDown 1s ease;
+}
+header h2 {
+  font-size: 1.2em;
+  font-weight: 300;
+  margin-top: 10px;
+  animation: fadeInUp 1s ease;
 }
 .dashboard {
   display: flex;
@@ -17,66 +27,88 @@ header {
 }
 .theory-column, .levels-column {
   width: 48%;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
-.theory-circle-wrapper {
+.theory-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  gap: 20px;
+  justify-content: center;
 }
-.point-bullseye {
+.point-circle {
   position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 20px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
 }
-.point-bullseye .ring {
+.point-circle .layer {
   position: absolute;
   border-radius: 50%;
-  background-color: #ccc;
-  border: 2px solid #888;
 }
-.ring.layer1 { width: 120px; height: 120px; top: 0; left: 0; }
-.ring.layer2 { width: 80px; height: 80px; top: 20px; left: 20px; }
-.ring.layer3 { width: 40px; height: 40px; top: 40px; left: 40px; }
-.point-bullseye.completed .ring { background-color: #4CAF50; }
-.point-label {
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-  color: white;
-  pointer-events: none;
+.point-circle .layer1 {
+  width: 130px; height: 130px; background-color: grey;
 }
-.levels-flow {
+.point-circle .layer2 {
+  width: 90px; height: 90px; background-color: grey;
+}
+.point-circle .layer3 {
+  width: 50px; height: 50px; background-color: grey;
+}
+.point-circle.completed .layer1 { background-color: #4CAF50; }
+.point-circle.completed .layer2 { background-color: #4CAF50; }
+.point-circle.completed .layer3 { background-color: #4CAF50; }
+.point-circle.partial .layer1 { background-color: #4CAF50; }
+.point-circle.partial .layer2 { background-color: #4CAF50; }
+.point-circle.partial .layer3 { background-color: grey; }
+.point-circle .label {
+  z-index: 1;
+  font-size: 1.4em;
+}
+.levels-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
 }
-.level-card {
+.level-box {
+  padding: 15px 20px;
+  border-radius: 10px;
   background: #ddd;
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin: 10px;
+  width: 100%;
+  font-size: 1.1em;
   position: relative;
-  cursor: default;
 }
-.level-card.unlocked {
+.level-box.unlocked {
   background: #c8e6c9;
   cursor: pointer;
 }
-.level-card.locked {
+.level-box.locked {
   background: #f0f0f0;
-  color: #888;
+  color: #999;
 }
-.arrow {
-  width: 40px;
-  height: 2px;
-  background: #888;
-  margin: 0 5px;
+.level-box::after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 30px;
+  background: #bbb;
+  margin: 5px auto;
+}
+.level-box:last-child::after {
+  display: none;
+}
+@keyframes fadeInDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
