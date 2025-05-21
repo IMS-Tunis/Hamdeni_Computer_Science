@@ -1,1 +1,82 @@
-CSS goes here
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f8f9fb;
+}
+header {
+  background: #2e3a59;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5em;
+}
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.theory-column, .levels-column {
+  width: 48%;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+.theory-circle-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.point-bullseye {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 20px;
+}
+.point-bullseye .ring {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: 2px solid #888;
+}
+.ring.layer1 { width: 120px; height: 120px; top: 0; left: 0; }
+.ring.layer2 { width: 80px; height: 80px; top: 20px; left: 20px; }
+.ring.layer3 { width: 40px; height: 40px; top: 40px; left: 40px; }
+.point-bullseye.completed .ring { background-color: #4CAF50; }
+.point-label {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  color: white;
+  pointer-events: none;
+}
+.levels-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.level-card {
+  background: #ddd;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 10px;
+  position: relative;
+  cursor: default;
+}
+.level-card.unlocked {
+  background: #c8e6c9;
+  cursor: pointer;
+}
+.level-card.locked {
+  background: #f0f0f0;
+  color: #888;
+}
+.arrow {
+  width: 40px;
+  height: 2px;
+  background: #888;
+  margin: 0 5px;
+}

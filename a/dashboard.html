@@ -1,1 +1,26 @@
-HTML goes here
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Level Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css"/>
+</head>
+<body>
+  <header>
+    <h1>Computer Science Journey Toward the A Level Cambridge Exam</h1>
+  </header>
+  <div class="dashboard">
+    <div class="theory-column">
+      <h2>Theory Points</h2>
+      <div id="theory-points"></div>
+    </div>
+    <div class="levels-column">
+      <h2>Programming Levels</h2>
+      <div id="programming-levels" class="levels-flow"></div>
+    </div>
+  </div>
+  <button onclick="logout()">Logout</button>
+  <script src="dashboard.js"></script>
+</body>
+</html>
