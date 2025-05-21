@@ -1,13 +1,15 @@
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #f5f7fa;
+  background: #f4f7fc;
 }
 header {
-  background: linear-gradient(to right, #3e4a89, #2b5876);
+  background: linear-gradient(to right, #4a00e0, #8e2de2);
   color: white;
   text-align: center;
-  padding: 30px 10px;
+  padding: 40px 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 header h1 {
   font-size: 3em;
@@ -24,66 +26,78 @@ header h2 {
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  gap: 40px;
 }
 .theory-column, .levels-column {
-  width: 48%;
+  width: 50%;
 }
 .theory-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
+  gap: 30px;
 }
-.point-circle {
+.theory-point {
   position: relative;
-  width: 130px;
-  height: 130px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  background: #e0e0e0;
+  background: #ddd;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
+  transition: transform 0.3s ease;
 }
-.point-circle .layer {
+.theory-point:hover {
+  transform: scale(1.05);
+}
+.theory-point .layer {
   position: absolute;
   border-radius: 50%;
+  background: grey;
+  opacity: 0.7;
 }
-.point-circle .layer1 {
-  width: 130px; height: 130px; background-color: grey;
-}
-.point-circle .layer2 {
-  width: 90px; height: 90px; background-color: grey;
-}
-.point-circle .layer3 {
-  width: 50px; height: 50px; background-color: grey;
-}
-.point-circle.completed .layer1 { background-color: #4CAF50; }
-.point-circle.completed .layer2 { background-color: #4CAF50; }
-.point-circle.completed .layer3 { background-color: #4CAF50; }
-.point-circle.partial .layer1 { background-color: #4CAF50; }
-.point-circle.partial .layer2 { background-color: #4CAF50; }
-.point-circle.partial .layer3 { background-color: grey; }
-.point-circle .label {
+.layer1 { width: 120px; height: 120px; }
+.layer2 { width: 80px; height: 80px; }
+.layer3 { width: 40px; height: 40px; }
+.theory-point.completed .layer { background: #4CAF50; }
+.theory-point.partial .layer1 { background: #4CAF50; }
+.theory-point.partial .layer2 { background: #4CAF50; }
+.theory-point .label {
   z-index: 1;
+  color: white;
   font-size: 1.4em;
+  font-weight: bold;
+}
+.theory-point:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  font-size: 0.9em;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 .levels-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
+  align-items: center;
+  position: relative;
 }
 .level-box {
-  padding: 15px 20px;
-  border-radius: 10px;
+  width: 80%;
   background: #ddd;
-  width: 100%;
-  font-size: 1.1em;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border-radius: 8px;
   position: relative;
+  font-size: 1em;
+  transition: all 0.3s ease;
 }
 .level-box.unlocked {
   background: #c8e6c9;
@@ -91,18 +105,34 @@ header h2 {
 }
 .level-box.locked {
   background: #f0f0f0;
-  color: #999;
+  color: #888;
 }
-.level-box::after {
-  content: '';
-  display: block;
-  width: 4px;
+.level-progress {
+  height: 6px;
+  background: #ccc;
+  margin-top: 6px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.level-progress .bar {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+.level-progress.done .bar {
+  width: 100%;
+  background: #4CAF50;
+}
+.level-progress.unlocked .bar {
+  width: 40%;
+  background: #FFC107;
+}
+.level-progress.locked .bar {
+  width: 0;
+}
+.arrow-down {
+  width: 30px;
   height: 30px;
-  background: #bbb;
-  margin: 5px auto;
-}
-.level-box:last-child::after {
-  display: none;
+  margin: -5px 0;
 }
 @keyframes fadeInDown {
   from { transform: translateY(-30px); opacity: 0; }
